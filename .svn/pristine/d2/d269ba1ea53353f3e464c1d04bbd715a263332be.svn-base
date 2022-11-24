@@ -1,0 +1,105 @@
+<template>
+  <div>
+    <video autoplay loop muted src="~/assets/bg-video-potrait.webm" />
+    <v-card class="content" flat color="transparent">
+      <v-img
+        max-width="250"
+        max-height="250"
+        class="mx-auto mb-10"
+        :src="require(`~/assets/images/logo/logo-ropeg.png`)"
+      />
+      <div class="white--text font-weight-bold text-h3 text-center">
+        AYO MENGABDI KEPADA NEGARA DENGAN MENDAFTAR SEBAGAI KOMPONEN CADANGAN
+        PERTAHANAN NEGARA
+      </div>
+      <div class="mt-10 white--text font-weight-reguler text-h4 text-center">
+        Nomor layanan Pengaduan : +628990170845 (Whatsapp) dengan mengetik
+        ‘bantuan’
+      </div>
+      <div class="d-inline-flex mt-10">
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular"
+          depressed
+          @click="
+            $router.push({
+              name: 'video-pendaftaran-baru',
+            })
+          "
+        >
+          Video Cara Mendaftar Komcad
+        </v-btn>
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular ml-3"
+          depressed
+          @click="$router.push({ name: 'lokasi-pendaftaran-baru' })"
+        >
+          Waktu & Lokasi Pendaftaran
+        </v-btn>
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular ml-3"
+          depressed
+          @click="$router.push({ name: 'dokumen' })"
+        >
+          Contoh Dokumen Pendaftaran
+        </v-btn>
+      </div>
+      <div class="align-center mt-5 mr-2">
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular ml-3"
+          depressed
+          @click="$router.push({ name: 'sebelum-pendaftaran' })"
+        >
+          Mulai Pendaftaran
+        </v-btn>
+      </div>
+      <div class="mt-10 mb-10">
+        <iframe
+          width="1550"
+          height="775"
+          src="https://www.youtube.com/embed/FITDSeof_gU?start=6?autoplay=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
+    </v-card>
+  </div>
+</template>
+
+<script src="./Index.js"></script>
+
+<style scoped>
+video {
+  width: 2000px;
+  height: 1600px;
+  object-fit: cover;
+  background-size: cover;
+  z-index: -1;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+</style>

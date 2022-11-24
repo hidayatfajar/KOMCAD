@@ -1,0 +1,357 @@
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
+
+let store = {};
+
+(function updateModules () {
+  // If store is an exported method = classic mode (deprecated)
+
+  if (typeof store === 'function') {
+    return console.warn('Classic mode for store/ is deprecated and will be removed in Nuxt 3.')
+  }
+
+  // Enforce store modules
+  store.modules = store.modules || {}
+
+  resolveStoreModules(require('..\\store\\actions.js'), 'actions.js')
+  resolveStoreModules(require('..\\store\\getters.js'), 'getters.js')
+  resolveStoreModules(require('..\\store\\mutations.js'), 'mutations.js')
+  resolveStoreModules(require('..\\store\\state.js'), 'state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Chatbot\\actions.js'), 'Admin/Chatbot/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Chatbot\\getters.js'), 'Admin/Chatbot/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Chatbot\\mutations.js'), 'Admin/Chatbot/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Chatbot\\state.js'), 'Admin/Chatbot/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Dashboard\\actions.js'), 'Admin/Dashboard/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Dashboard\\getters.js'), 'Admin/Dashboard/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Dashboard\\mutations.js'), 'Admin/Dashboard/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Dashboard\\state.js'), 'Admin/Dashboard/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Helpdesk\\actions.js'), 'Admin/Helpdesk/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Helpdesk\\getters.js'), 'Admin/Helpdesk/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Helpdesk\\mutations.js'), 'Admin/Helpdesk/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Helpdesk\\state.js'), 'Admin/Helpdesk/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\LiveChat\\actions.js'), 'Admin/LiveChat/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\LiveChat\\getters.js'), 'Admin/LiveChat/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\LiveChat\\mutations.js'), 'Admin/LiveChat/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\LiveChat\\state.js'), 'Admin/LiveChat/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\UserManagement\\actions.js'), 'Admin/UserManagement/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\UserManagement\\getters.js'), 'Admin/UserManagement/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\UserManagement\\mutations.js'), 'Admin/UserManagement/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\UserManagement\\state.js'), 'Admin/UserManagement/state.js')
+  resolveStoreModules(require('..\\store\\Operator\\Helpdesk\\actions.js'), 'Operator/Helpdesk/actions.js')
+  resolveStoreModules(require('..\\store\\Operator\\Helpdesk\\getters.js'), 'Operator/Helpdesk/getters.js')
+  resolveStoreModules(require('..\\store\\Operator\\Helpdesk\\mutations.js'), 'Operator/Helpdesk/mutations.js')
+  resolveStoreModules(require('..\\store\\Operator\\Helpdesk\\state.js'), 'Operator/Helpdesk/state.js')
+  resolveStoreModules(require('..\\store\\Operator\\LiveChat\\actions.js'), 'Operator/LiveChat/actions.js')
+  resolveStoreModules(require('..\\store\\Operator\\LiveChat\\getters.js'), 'Operator/LiveChat/getters.js')
+  resolveStoreModules(require('..\\store\\Operator\\LiveChat\\mutations.js'), 'Operator/LiveChat/mutations.js')
+  resolveStoreModules(require('..\\store\\Operator\\LiveChat\\state.js'), 'Operator/LiveChat/state.js')
+  resolveStoreModules(require('..\\store\\Operator\\UserManagement\\actions.js'), 'Operator/UserManagement/actions.js')
+  resolveStoreModules(require('..\\store\\Operator\\UserManagement\\getters.js'), 'Operator/UserManagement/getters.js')
+  resolveStoreModules(require('..\\store\\Operator\\UserManagement\\mutations.js'), 'Operator/UserManagement/mutations.js')
+  resolveStoreModules(require('..\\store\\Operator\\UserManagement\\state.js'), 'Operator/UserManagement/state.js')
+  resolveStoreModules(require('..\\store\\Public\\Chat\\actions.js'), 'Public/Chat/actions.js')
+  resolveStoreModules(require('..\\store\\Public\\Chat\\getters.js'), 'Public/Chat/getters.js')
+  resolveStoreModules(require('..\\store\\Public\\Chat\\mutations.js'), 'Public/Chat/mutations.js')
+  resolveStoreModules(require('..\\store\\Public\\Chat\\state.js'), 'Public/Chat/state.js')
+  resolveStoreModules(require('..\\store\\Public\\Kontak\\actions.js'), 'Public/Kontak/actions.js')
+  resolveStoreModules(require('..\\store\\Public\\Kontak\\getters.js'), 'Public/Kontak/getters.js')
+  resolveStoreModules(require('..\\store\\Public\\Kontak\\mutations.js'), 'Public/Kontak/mutations.js')
+  resolveStoreModules(require('..\\store\\Public\\Kontak\\state.js'), 'Public/Kontak/state.js')
+  resolveStoreModules(require('..\\store\\Public\\Tiket\\actions.js'), 'Public/Tiket/actions.js')
+  resolveStoreModules(require('..\\store\\Public\\Tiket\\getters.js'), 'Public/Tiket/getters.js')
+  resolveStoreModules(require('..\\store\\Public\\Tiket\\mutations.js'), 'Public/Tiket/mutations.js')
+  resolveStoreModules(require('..\\store\\Public\\Tiket\\state.js'), 'Public/Tiket/state.js')
+  resolveStoreModules(require('..\\store\\Public\\Tracking\\actions.js'), 'Public/Tracking/actions.js')
+  resolveStoreModules(require('..\\store\\Public\\Tracking\\getters.js'), 'Public/Tracking/getters.js')
+  resolveStoreModules(require('..\\store\\Public\\Tracking\\mutations.js'), 'Public/Tracking/mutations.js')
+  resolveStoreModules(require('..\\store\\Public\\Tracking\\state.js'), 'Public/Tracking/state.js')
+  resolveStoreModules(require('..\\store\\Registered\\Tiket\\actions.js'), 'Registered/Tiket/actions.js')
+  resolveStoreModules(require('..\\store\\Registered\\Tiket\\getters.js'), 'Registered/Tiket/getters.js')
+  resolveStoreModules(require('..\\store\\Registered\\Tiket\\mutations.js'), 'Registered/Tiket/mutations.js')
+  resolveStoreModules(require('..\\store\\Registered\\Tiket\\state.js'), 'Registered/Tiket/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Faq\\actions.js'), 'Admin/Master/Faq/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Faq\\getters.js'), 'Admin/Master/Faq/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Faq\\mutations.js'), 'Admin/Master/Faq/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Faq\\state.js'), 'Admin/Master/Faq/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ImagesSlider\\actions.js'), 'Admin/Master/ImagesSlider/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ImagesSlider\\getters.js'), 'Admin/Master/ImagesSlider/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ImagesSlider\\mutations.js'), 'Admin/Master/ImagesSlider/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ImagesSlider\\state.js'), 'Admin/Master/ImagesSlider/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\InformasiChatbot\\actions.js'), 'Admin/Master/InformasiChatbot/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\InformasiChatbot\\getters.js'), 'Admin/Master/InformasiChatbot/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\InformasiChatbot\\mutations.js'), 'Admin/Master/InformasiChatbot/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\InformasiChatbot\\state.js'), 'Admin/Master/InformasiChatbot/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KategoriBantuan\\actions.js'), 'Admin/Master/KategoriBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KategoriBantuan\\getters.js'), 'Admin/Master/KategoriBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KategoriBantuan\\mutations.js'), 'Admin/Master/KategoriBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KategoriBantuan\\state.js'), 'Admin/Master/KategoriBantuan/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KlasifikasiBantuan\\actions.js'), 'Admin/Master/KlasifikasiBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KlasifikasiBantuan\\getters.js'), 'Admin/Master/KlasifikasiBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KlasifikasiBantuan\\mutations.js'), 'Admin/Master/KlasifikasiBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\KlasifikasiBantuan\\state.js'), 'Admin/Master/KlasifikasiBantuan/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Kontak\\actions.js'), 'Admin/Master/Kontak/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Kontak\\getters.js'), 'Admin/Master/Kontak/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Kontak\\mutations.js'), 'Admin/Master/Kontak/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\Kontak\\state.js'), 'Admin/Master/Kontak/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\PrioritasBantuan\\actions.js'), 'Admin/Master/PrioritasBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\PrioritasBantuan\\getters.js'), 'Admin/Master/PrioritasBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\PrioritasBantuan\\mutations.js'), 'Admin/Master/PrioritasBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\PrioritasBantuan\\state.js'), 'Admin/Master/PrioritasBantuan/state.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ServiceLevelAgreement\\actions.js'), 'Admin/Master/ServiceLevelAgreement/actions.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ServiceLevelAgreement\\getters.js'), 'Admin/Master/ServiceLevelAgreement/getters.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ServiceLevelAgreement\\mutations.js'), 'Admin/Master/ServiceLevelAgreement/mutations.js')
+  resolveStoreModules(require('..\\store\\Admin\\Master\\ServiceLevelAgreement\\state.js'), 'Admin/Master/ServiceLevelAgreement/state.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KategoriBantuan\\actions.js'), 'Operator/Master/KategoriBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KategoriBantuan\\getters.js'), 'Operator/Master/KategoriBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KategoriBantuan\\mutations.js'), 'Operator/Master/KategoriBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KategoriBantuan\\state.js'), 'Operator/Master/KategoriBantuan/state.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KlasifikasiBantuan\\actions.js'), 'Operator/Master/KlasifikasiBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KlasifikasiBantuan\\getters.js'), 'Operator/Master/KlasifikasiBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KlasifikasiBantuan\\mutations.js'), 'Operator/Master/KlasifikasiBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\KlasifikasiBantuan\\state.js'), 'Operator/Master/KlasifikasiBantuan/state.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\PrioritasBantuan\\actions.js'), 'Operator/Master/PrioritasBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\PrioritasBantuan\\getters.js'), 'Operator/Master/PrioritasBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\PrioritasBantuan\\mutations.js'), 'Operator/Master/PrioritasBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Operator\\Master\\PrioritasBantuan\\state.js'), 'Operator/Master/PrioritasBantuan/state.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\Faq\\actions.js'), 'Public/Master/Faq/actions.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\Faq\\getters.js'), 'Public/Master/Faq/getters.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\Faq\\mutations.js'), 'Public/Master/Faq/mutations.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\Faq\\state.js'), 'Public/Master/Faq/state.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\KlasifikasiBantuan\\actions.js'), 'Public/Master/KlasifikasiBantuan/actions.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\KlasifikasiBantuan\\getters.js'), 'Public/Master/KlasifikasiBantuan/getters.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\KlasifikasiBantuan\\mutations.js'), 'Public/Master/KlasifikasiBantuan/mutations.js')
+  resolveStoreModules(require('..\\store\\Public\\Master\\KlasifikasiBantuan\\state.js'), 'Public/Master/KlasifikasiBantuan/state.js')
+
+  // If the environment supports hot reloading...
+
+  if (process.client && module.hot) {
+    // Whenever any Vuex module is updated...
+    module.hot.accept([
+      '..\\store\\actions.js',
+      '..\\store\\getters.js',
+      '..\\store\\mutations.js',
+      '..\\store\\state.js',
+      '..\\store\\Admin\\Chatbot\\actions.js',
+      '..\\store\\Admin\\Chatbot\\getters.js',
+      '..\\store\\Admin\\Chatbot\\mutations.js',
+      '..\\store\\Admin\\Chatbot\\state.js',
+      '..\\store\\Admin\\Dashboard\\actions.js',
+      '..\\store\\Admin\\Dashboard\\getters.js',
+      '..\\store\\Admin\\Dashboard\\mutations.js',
+      '..\\store\\Admin\\Dashboard\\state.js',
+      '..\\store\\Admin\\Helpdesk\\actions.js',
+      '..\\store\\Admin\\Helpdesk\\getters.js',
+      '..\\store\\Admin\\Helpdesk\\mutations.js',
+      '..\\store\\Admin\\Helpdesk\\state.js',
+      '..\\store\\Admin\\LiveChat\\actions.js',
+      '..\\store\\Admin\\LiveChat\\getters.js',
+      '..\\store\\Admin\\LiveChat\\mutations.js',
+      '..\\store\\Admin\\LiveChat\\state.js',
+      '..\\store\\Admin\\UserManagement\\actions.js',
+      '..\\store\\Admin\\UserManagement\\getters.js',
+      '..\\store\\Admin\\UserManagement\\mutations.js',
+      '..\\store\\Admin\\UserManagement\\state.js',
+      '..\\store\\Operator\\Helpdesk\\actions.js',
+      '..\\store\\Operator\\Helpdesk\\getters.js',
+      '..\\store\\Operator\\Helpdesk\\mutations.js',
+      '..\\store\\Operator\\Helpdesk\\state.js',
+      '..\\store\\Operator\\LiveChat\\actions.js',
+      '..\\store\\Operator\\LiveChat\\getters.js',
+      '..\\store\\Operator\\LiveChat\\mutations.js',
+      '..\\store\\Operator\\LiveChat\\state.js',
+      '..\\store\\Operator\\UserManagement\\actions.js',
+      '..\\store\\Operator\\UserManagement\\getters.js',
+      '..\\store\\Operator\\UserManagement\\mutations.js',
+      '..\\store\\Operator\\UserManagement\\state.js',
+      '..\\store\\Public\\Chat\\actions.js',
+      '..\\store\\Public\\Chat\\getters.js',
+      '..\\store\\Public\\Chat\\mutations.js',
+      '..\\store\\Public\\Chat\\state.js',
+      '..\\store\\Public\\Kontak\\actions.js',
+      '..\\store\\Public\\Kontak\\getters.js',
+      '..\\store\\Public\\Kontak\\mutations.js',
+      '..\\store\\Public\\Kontak\\state.js',
+      '..\\store\\Public\\Tiket\\actions.js',
+      '..\\store\\Public\\Tiket\\getters.js',
+      '..\\store\\Public\\Tiket\\mutations.js',
+      '..\\store\\Public\\Tiket\\state.js',
+      '..\\store\\Public\\Tracking\\actions.js',
+      '..\\store\\Public\\Tracking\\getters.js',
+      '..\\store\\Public\\Tracking\\mutations.js',
+      '..\\store\\Public\\Tracking\\state.js',
+      '..\\store\\Registered\\Tiket\\actions.js',
+      '..\\store\\Registered\\Tiket\\getters.js',
+      '..\\store\\Registered\\Tiket\\mutations.js',
+      '..\\store\\Registered\\Tiket\\state.js',
+      '..\\store\\Admin\\Master\\Faq\\actions.js',
+      '..\\store\\Admin\\Master\\Faq\\getters.js',
+      '..\\store\\Admin\\Master\\Faq\\mutations.js',
+      '..\\store\\Admin\\Master\\Faq\\state.js',
+      '..\\store\\Admin\\Master\\ImagesSlider\\actions.js',
+      '..\\store\\Admin\\Master\\ImagesSlider\\getters.js',
+      '..\\store\\Admin\\Master\\ImagesSlider\\mutations.js',
+      '..\\store\\Admin\\Master\\ImagesSlider\\state.js',
+      '..\\store\\Admin\\Master\\InformasiChatbot\\actions.js',
+      '..\\store\\Admin\\Master\\InformasiChatbot\\getters.js',
+      '..\\store\\Admin\\Master\\InformasiChatbot\\mutations.js',
+      '..\\store\\Admin\\Master\\InformasiChatbot\\state.js',
+      '..\\store\\Admin\\Master\\KategoriBantuan\\actions.js',
+      '..\\store\\Admin\\Master\\KategoriBantuan\\getters.js',
+      '..\\store\\Admin\\Master\\KategoriBantuan\\mutations.js',
+      '..\\store\\Admin\\Master\\KategoriBantuan\\state.js',
+      '..\\store\\Admin\\Master\\KlasifikasiBantuan\\actions.js',
+      '..\\store\\Admin\\Master\\KlasifikasiBantuan\\getters.js',
+      '..\\store\\Admin\\Master\\KlasifikasiBantuan\\mutations.js',
+      '..\\store\\Admin\\Master\\KlasifikasiBantuan\\state.js',
+      '..\\store\\Admin\\Master\\Kontak\\actions.js',
+      '..\\store\\Admin\\Master\\Kontak\\getters.js',
+      '..\\store\\Admin\\Master\\Kontak\\mutations.js',
+      '..\\store\\Admin\\Master\\Kontak\\state.js',
+      '..\\store\\Admin\\Master\\PrioritasBantuan\\actions.js',
+      '..\\store\\Admin\\Master\\PrioritasBantuan\\getters.js',
+      '..\\store\\Admin\\Master\\PrioritasBantuan\\mutations.js',
+      '..\\store\\Admin\\Master\\PrioritasBantuan\\state.js',
+      '..\\store\\Admin\\Master\\ServiceLevelAgreement\\actions.js',
+      '..\\store\\Admin\\Master\\ServiceLevelAgreement\\getters.js',
+      '..\\store\\Admin\\Master\\ServiceLevelAgreement\\mutations.js',
+      '..\\store\\Admin\\Master\\ServiceLevelAgreement\\state.js',
+      '..\\store\\Operator\\Master\\KategoriBantuan\\actions.js',
+      '..\\store\\Operator\\Master\\KategoriBantuan\\getters.js',
+      '..\\store\\Operator\\Master\\KategoriBantuan\\mutations.js',
+      '..\\store\\Operator\\Master\\KategoriBantuan\\state.js',
+      '..\\store\\Operator\\Master\\KlasifikasiBantuan\\actions.js',
+      '..\\store\\Operator\\Master\\KlasifikasiBantuan\\getters.js',
+      '..\\store\\Operator\\Master\\KlasifikasiBantuan\\mutations.js',
+      '..\\store\\Operator\\Master\\KlasifikasiBantuan\\state.js',
+      '..\\store\\Operator\\Master\\PrioritasBantuan\\actions.js',
+      '..\\store\\Operator\\Master\\PrioritasBantuan\\getters.js',
+      '..\\store\\Operator\\Master\\PrioritasBantuan\\mutations.js',
+      '..\\store\\Operator\\Master\\PrioritasBantuan\\state.js',
+      '..\\store\\Public\\Master\\Faq\\actions.js',
+      '..\\store\\Public\\Master\\Faq\\getters.js',
+      '..\\store\\Public\\Master\\Faq\\mutations.js',
+      '..\\store\\Public\\Master\\Faq\\state.js',
+      '..\\store\\Public\\Master\\KlasifikasiBantuan\\actions.js',
+      '..\\store\\Public\\Master\\KlasifikasiBantuan\\getters.js',
+      '..\\store\\Public\\Master\\KlasifikasiBantuan\\mutations.js',
+      '..\\store\\Public\\Master\\KlasifikasiBantuan\\state.js',
+    ], () => {
+      // Update `root.modules` with the latest definitions.
+      updateModules()
+      // Trigger a hot update in the store.
+      window.$nuxt.$store.hotUpdate(store)
+    })
+  }
+})()
+
+// createStore
+export const createStore = store instanceof Function ? store : () => {
+  return new Vuex.Store(Object.assign({
+    strict: (process.env.NODE_ENV !== 'production')
+  }, store))
+}
+
+function normalizeRoot (moduleData, filePath) {
+  moduleData = moduleData.default || moduleData
+
+  if (moduleData.commit) {
+    throw new Error(`[nuxt] ${filePath} should export a method that returns a Vuex instance.`)
+  }
+
+  if (typeof moduleData !== 'function') {
+    // Avoid TypeError: setting a property that has only a getter when overwriting top level keys
+    moduleData = Object.assign({}, moduleData)
+  }
+  return normalizeModule(moduleData, filePath)
+}
+
+function normalizeModule (moduleData, filePath) {
+  if (moduleData.state && typeof moduleData.state !== 'function') {
+    console.warn(`'state' should be a method that returns an object in ${filePath}`)
+
+    const state = Object.assign({}, moduleData.state)
+    // Avoid TypeError: setting a property that has only a getter when overwriting top level keys
+    moduleData = Object.assign({}, moduleData, { state: () => state })
+  }
+  return moduleData
+}
+
+function resolveStoreModules (moduleData, filename) {
+  moduleData = moduleData.default || moduleData
+  // Remove store src + extension (./foo/index.js -> foo/index)
+  const namespace = filename.replace(/\.(js|mjs)$/, '')
+  const namespaces = namespace.split('/')
+  let moduleName = namespaces[namespaces.length - 1]
+  const filePath = `store/${filename}`
+
+  moduleData = moduleName === 'state'
+    ? normalizeState(moduleData, filePath)
+    : normalizeModule(moduleData, filePath)
+
+  // If src is a known Vuex property
+  if (VUEX_PROPERTIES.includes(moduleName)) {
+    const property = moduleName
+    const propertyStoreModule = getStoreModule(store, namespaces, { isProperty: true })
+
+    // Replace state since it's a function
+    mergeProperty(propertyStoreModule, moduleData, property)
+    return
+  }
+
+  // If file is foo/index.js, it should be saved as foo
+  const isIndexModule = (moduleName === 'index')
+  if (isIndexModule) {
+    namespaces.pop()
+    moduleName = namespaces[namespaces.length - 1]
+  }
+
+  const storeModule = getStoreModule(store, namespaces)
+
+  for (const property of VUEX_PROPERTIES) {
+    mergeProperty(storeModule, moduleData[property], property)
+  }
+
+  if (moduleData.namespaced === false) {
+    delete storeModule.namespaced
+  }
+}
+
+function normalizeState (moduleData, filePath) {
+  if (typeof moduleData !== 'function') {
+    console.warn(`${filePath} should export a method that returns an object`)
+    const state = Object.assign({}, moduleData)
+    return () => state
+  }
+  return normalizeModule(moduleData, filePath)
+}
+
+function getStoreModule (storeModule, namespaces, { isProperty = false } = {}) {
+  // If ./mutations.js
+  if (!namespaces.length || (isProperty && namespaces.length === 1)) {
+    return storeModule
+  }
+
+  const namespace = namespaces.shift()
+
+  storeModule.modules[namespace] = storeModule.modules[namespace] || {}
+  storeModule.modules[namespace].namespaced = true
+  storeModule.modules[namespace].modules = storeModule.modules[namespace].modules || {}
+
+  return getStoreModule(storeModule.modules[namespace], namespaces, { isProperty })
+}
+
+function mergeProperty (storeModule, moduleData, property) {
+  if (!moduleData) {
+    return
+  }
+
+  if (property === 'state') {
+    storeModule.state = moduleData || storeModule.state
+  } else {
+    storeModule[property] = Object.assign({}, storeModule[property], moduleData)
+  }
+}

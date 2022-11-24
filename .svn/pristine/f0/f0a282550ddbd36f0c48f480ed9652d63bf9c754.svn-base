@@ -1,0 +1,11 @@
+export default {
+  getChatRoom (state) {
+    return state.chatRoom
+  },
+  getSummaryRoom (state) {
+    return state.summaryRoom
+  },
+  getChat (state) {
+    return state.chat
+  }
+}

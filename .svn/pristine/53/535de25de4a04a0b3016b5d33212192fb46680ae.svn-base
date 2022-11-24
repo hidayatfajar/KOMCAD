@@ -1,0 +1,108 @@
+export default {
+  async loadRiwayatChatbot ({ commit }, payload) {
+    try {
+      const response = await this.$axios.get('admin/chatbot/riwayat', payload)
+      commit('SET_RIWAYAT_CHATBOT', response.data.data)
+      return {
+        data: response.data.data,
+        message: 'Berhasil mendapatkan data',
+        status: true
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadResponPelanggan ({ commit }, payload) {
+    try {
+      const response = await this.$axios.get(
+        'admin/chatbot/respon-pelanggan',
+        payload
+      )
+      commit('SET_RESPON_PELANGGAN', response.data.data)
+      return {
+        data: response.data.data,
+        message: 'Berhasil mendapatkan data',
+        status: true
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadRiwayatChatDetail ({ commit }, payload) {
+    try {
+      const response = await this.$axios.get(
+        `admin/chatbot/riwayat/${payload.chat_room_id}/detail`,
+        payload
+      )
+      commit('SET_RIWAYAT_CHAT_DETAIL', response.data.data)
+      return {
+        status: true,
+        data: response.data.data,
+        message: 'Berhasil mendapatkan data'
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadTrafikPerMinggu ({ commit }, payload) {
+    try {
+      const response = await this.$axios.get('admin/chatbot/respon-chatbot')
+      // commit('SET_TRAFIK_PER_MINGGU', response.data)
+      return {
+        status: true,
+        data: response.data.data,
+        message: 'Berhasil mendapatkan data'
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

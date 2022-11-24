@@ -1,0 +1,29 @@
+export default {
+  async loadMasterKategori ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('operator/master/kategori-bantuan/get-opsi', {
+        params: payload
+      })
+      commit('SET_KATEGORI', res.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

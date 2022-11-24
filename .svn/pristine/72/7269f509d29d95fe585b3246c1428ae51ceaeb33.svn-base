@@ -1,0 +1,101 @@
+{
+  "NuxtLogo": {
+    "description": "Auto imported from components/NuxtLogo.vue"
+  },
+  "Tutorial": {
+    "description": "Auto imported from components/Tutorial.vue"
+  },
+  "VuetifyLogo": {
+    "description": "Auto imported from components/VuetifyLogo.vue"
+  },
+  "FieldAutocompleteField": {
+    "description": "Auto imported from components/Field/AutocompleteField/AutocompleteField.js"
+  },
+  "FieldCheckBoxField": {
+    "description": "Auto imported from components/Field/CheckBoxField/CheckBoxField.js"
+  },
+  "FieldColorPickerField": {
+    "description": "Auto imported from components/Field/ColorPickerField/ColorPickerField.js"
+  },
+  "FieldDatePickerField": {
+    "description": "Auto imported from components/Field/DatePickerField/DatePickerField.js"
+  },
+  "FieldContainer": {
+    "description": "Auto imported from components/Field/FieldContainer/FieldContainer.js"
+  },
+  "FieldDateRangePickerField": {
+    "description": "Auto imported from components/Field/DateRangePickerField/DateRangePickerField.js"
+  },
+  "FieldImagesUploadField": {
+    "description": "Auto imported from components/Field/ImagesUploadField/ImagesUploadField.js"
+  },
+  "FieldMediaUploadField": {
+    "description": "Auto imported from components/Field/MediaUploadField/MediaUploadField.js"
+  },
+  "FieldNumberField": {
+    "description": "Auto imported from components/Field/NumberField/NumberField.js"
+  },
+  "FieldSearchBar": {
+    "description": "Auto imported from components/Field/SearchBar/SearchBar.js"
+  },
+  "FieldSearchBarAutocomplete": {
+    "description": "Auto imported from components/Field/SearchBarAutocomplete/SearchBarAutocomplete.js"
+  },
+  "FieldSingleUploadField": {
+    "description": "Auto imported from components/Field/SingleUploadField/SingleUploadField.js"
+  },
+  "FieldTextareaField": {
+    "description": "Auto imported from components/Field/TextareaField/TextareaField.js"
+  },
+  "FieldTextField": {
+    "description": "Auto imported from components/Field/TextField/TextField.js"
+  },
+  "FieldTimePickerField": {
+    "description": "Auto imported from components/Field/TimePickerField/TimePickerField.js"
+  },
+  "MainFooterPublik": {
+    "description": "Auto imported from components/Main/FooterPublik/FooterPublik.js"
+  },
+  "MainTopbarAdmin": {
+    "description": "Auto imported from components/Main/TopbarAdmin/TopbarAdmin.js"
+  },
+  "MainTopbarMenu": {
+    "description": "Auto imported from components/Main/TopbarMenu/TopbarMenu.js"
+  },
+  "NotificationAlert": {
+    "description": "Auto imported from components/Notification/Alert/Alert.js"
+  },
+  "NotificationConfirmation": {
+    "description": "Auto imported from components/Notification/Confirmation/Confirmation.js"
+  },
+  "NotificationCustomAlert": {
+    "description": "Auto imported from components/Notification/CustomAlert/CustomAlert.js"
+  },
+  "NotificationToast": {
+    "description": "Auto imported from components/Notification/Toast/Toast.js"
+  },
+  "WidgetsContentWrapper": {
+    "description": "Auto imported from components/Widgets/ContentWrapper/ContentWrapper.js"
+  },
+  "WidgetsDataTable": {
+    "description": "Auto imported from components/Widgets/DataTable/DataTable.js"
+  },
+  "FieldImageView": {
+    "description": "Auto imported from components/Field/Image/ImageView/ImageView.js"
+  },
+  "WidgetsChartBarChart": {
+    "description": "Auto imported from components/Widgets/Chart/BarChart/BarChart.js"
+  },
+  "WidgetsChartGaugeChart": {
+    "description": "Auto imported from components/Widgets/Chart/GaugeChart/GaugeChart.js"
+  },
+  "WidgetsChartLineChartChatBot": {
+    "description": "Auto imported from components/Widgets/Chart/LineChartChatBot/LineChartChatBot.js"
+  },
+  "WidgetsChartLineChart": {
+    "description": "Auto imported from components/Widgets/Chart/LineChart/LineChart.js"
+  },
+  "WidgetsChartPieChart": {
+    "description": "Auto imported from components/Widgets/Chart/PieChart/PieChart.js"
+  }
+}

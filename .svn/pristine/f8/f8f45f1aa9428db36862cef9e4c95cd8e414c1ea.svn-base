@@ -1,0 +1,32 @@
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'video-pendaftaran-baru',
+  components: {
+    //
+  },
+  head () {},
+  watch: {
+    // tabModel (val) {
+    //   if (val === 'faq') {
+    //     this.tabModelfaq = 'daftar'
+    //   }
+    // }
+  },
+  computed: {
+    ...mapGetters({
+      //
+    })
+
+  },
+  created () {
+    this.$store.dispatch('fetchAksesLocalStorage')
+    this.$store.dispatch('fetchCookie')
+  },
+  methods: {
+    //
+  },
+  data: () => ({
+    //
+  })
+}

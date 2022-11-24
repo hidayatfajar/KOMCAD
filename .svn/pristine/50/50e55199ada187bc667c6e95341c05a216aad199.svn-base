@@ -1,0 +1,164 @@
+export default {
+  async loadChatRoom ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/chat/chat-room', payload)
+      commit('SET_CHAT_ROOM', res.data.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data.data,
+        totalHalaman: res.data.total_halaman,
+        halamanSekarang: res.data.halaman_sekarang
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadSummaryRoom ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/chat/summary-room', payload)
+      commit('SET_SUMMARY_ROOM', res.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadPercakapan ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/chat/percakapan', payload)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async setHandler ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/chat/set-handler', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async closeRoom ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post(
+        `admin/chat/${payload.chat_room_id}/close-room`,
+        payload
+      )
+      return {
+        status: true,
+        message: 'Berhasil mengakhiri percakapan',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async downloadLampiran ({ commit }, payload) {
+    try {
+      const blob = await this.$axios.$get(
+        `admin/chat/${payload.parameter.id}/download-lampiran`,
+        { responseType: 'blob' }
+      )
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      const url = URL.createObjectURL(blob)
+      a.href = url
+      a.download = payload.parameter.file
+      a.click()
+      URL.revokeObjectURL(url)
+      a.remove()
+      return {
+        status: true,
+        message: 'Berhasil mendownload data',
+        loading: false
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+# Discovered Components
+
+This is an auto-generated list of components discovered by [nuxt/components](https://github.com/nuxt/components).
+
+You can directly use them in pages and other components without the need to import them.
+
+**Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
+
+- `<NuxtLogo>` | `<nuxt-logo>` (components/NuxtLogo.vue)
+- `<Tutorial>` | `<tutorial>` (components/Tutorial.vue)
+- `<VuetifyLogo>` | `<vuetify-logo>` (components/VuetifyLogo.vue)
+- `<FieldAutocompleteField>` | `<field-autocomplete-field>` (components/Field/AutocompleteField/AutocompleteField.js)
+- `<FieldCheckBoxField>` | `<field-check-box-field>` (components/Field/CheckBoxField/CheckBoxField.js)
+- `<FieldColorPickerField>` | `<field-color-picker-field>` (components/Field/ColorPickerField/ColorPickerField.js)
+- `<FieldDatePickerField>` | `<field-date-picker-field>` (components/Field/DatePickerField/DatePickerField.js)
+- `<FieldContainer>` | `<field-container>` (components/Field/FieldContainer/FieldContainer.js)
+- `<FieldDateRangePickerField>` | `<field-date-range-picker-field>` (components/Field/DateRangePickerField/DateRangePickerField.js)
+- `<FieldImagesUploadField>` | `<field-images-upload-field>` (components/Field/ImagesUploadField/ImagesUploadField.js)
+- `<FieldMediaUploadField>` | `<field-media-upload-field>` (components/Field/MediaUploadField/MediaUploadField.js)
+- `<FieldNumberField>` | `<field-number-field>` (components/Field/NumberField/NumberField.js)
+- `<FieldSearchBar>` | `<field-search-bar>` (components/Field/SearchBar/SearchBar.js)
+- `<FieldSearchBarAutocomplete>` | `<field-search-bar-autocomplete>` (components/Field/SearchBarAutocomplete/SearchBarAutocomplete.js)
+- `<FieldSingleUploadField>` | `<field-single-upload-field>` (components/Field/SingleUploadField/SingleUploadField.js)
+- `<FieldTextareaField>` | `<field-textarea-field>` (components/Field/TextareaField/TextareaField.js)
+- `<FieldTextField>` | `<field-text-field>` (components/Field/TextField/TextField.js)
+- `<FieldTimePickerField>` | `<field-time-picker-field>` (components/Field/TimePickerField/TimePickerField.js)
+- `<MainFooterPublik>` | `<main-footer-publik>` (components/Main/FooterPublik/FooterPublik.js)
+- `<MainTopbarAdmin>` | `<main-topbar-admin>` (components/Main/TopbarAdmin/TopbarAdmin.js)
+- `<MainTopbarMenu>` | `<main-topbar-menu>` (components/Main/TopbarMenu/TopbarMenu.js)
+- `<NotificationAlert>` | `<notification-alert>` (components/Notification/Alert/Alert.js)
+- `<NotificationConfirmation>` | `<notification-confirmation>` (components/Notification/Confirmation/Confirmation.js)
+- `<NotificationCustomAlert>` | `<notification-custom-alert>` (components/Notification/CustomAlert/CustomAlert.js)
+- `<NotificationToast>` | `<notification-toast>` (components/Notification/Toast/Toast.js)
+- `<WidgetsContentWrapper>` | `<widgets-content-wrapper>` (components/Widgets/ContentWrapper/ContentWrapper.js)
+- `<WidgetsDataTable>` | `<widgets-data-table>` (components/Widgets/DataTable/DataTable.js)
+- `<FieldImageView>` | `<field-image-view>` (components/Field/Image/ImageView/ImageView.js)
+- `<WidgetsChartBarChart>` | `<widgets-chart-bar-chart>` (components/Widgets/Chart/BarChart/BarChart.js)
+- `<WidgetsChartGaugeChart>` | `<widgets-chart-gauge-chart>` (components/Widgets/Chart/GaugeChart/GaugeChart.js)
+- `<WidgetsChartLineChartChatBot>` | `<widgets-chart-line-chart-chat-bot>` (components/Widgets/Chart/LineChartChatBot/LineChartChatBot.js)
+- `<WidgetsChartLineChart>` | `<widgets-chart-line-chart>` (components/Widgets/Chart/LineChart/LineChart.js)
+- `<WidgetsChartPieChart>` | `<widgets-chart-pie-chart>` (components/Widgets/Chart/PieChart/PieChart.js)

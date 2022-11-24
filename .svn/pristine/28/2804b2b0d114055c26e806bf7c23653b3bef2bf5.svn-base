@@ -1,0 +1,6 @@
+import VuePdfApp from 'vue-pdf-app'
+import Vue from 'vue'
+// import this to use default icons for buttons
+import 'vue-pdf-app/dist/icons/main.css'
+
+Vue.component('VuePdfApp', VuePdfApp)

@@ -1,0 +1,133 @@
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'lokasi-pendaftaran-baru',
+  components: {
+    //
+  },
+  head () {
+    return {
+      title: 'Lokasi Pendaftaran'
+    }
+  },
+  watch: {
+    //
+  },
+  computed: {
+    ...mapGetters({
+      //
+    })
+  },
+  created () {
+    this.$store.dispatch('fetchAksesLocalStorage')
+    this.$store.dispatch('fetchCookie')
+  },
+  methods: {
+    //
+  },
+  data: () => ({
+    headers: [
+
+      { text: 'No', value: 'no' },
+      { text: 'Nama', value: 'nama' },
+      { text: 'Lokasi', value: 'lokasi' }
+
+    ],
+    itemsDarat: [
+      {
+        id: 1,
+        nama: 'Kodam II/SWJ',
+        lokasi: 'Palembang'
+      },
+      {
+        id: 2,
+        nama: 'Kodam VI/MLW',
+        lokasi: 'Balikpapan'
+      },
+      {
+        id: 3,
+        nama: 'Kodam XIV/HSN',
+        lokasi: 'Makassar'
+      }
+    ],
+    itemsLaut: [
+      {
+        id: 1,
+        nama: 'Lanal Yogyakarta',
+        lokasi: 'Yogyakarta'
+      },
+      {
+        id: 2,
+        nama: 'Lanal Tegal',
+        lokasi: 'Tegal'
+      },
+      {
+        id: 3,
+        nama: 'Lanal Malang',
+        lokasi: 'Malang'
+      },
+      {
+        id: 4,
+        nama: 'Lanal Banyuwangi',
+        lokasi: 'Banyuwangi'
+      },
+      {
+        id: 5,
+        nama: 'Lanal Batuporon (madura)',
+        lokasi: 'Madura'
+      }
+    ],
+    itemsUdara: [
+      {
+        id: 1,
+        nama: 'Lanud Halim Perdanakusuma',
+        lokasi: 'Jakarta'
+      },
+      {
+        id: 2,
+        nama: 'Lanud Atang Sendjaja',
+        lokasi: 'Bogor'
+      },
+      {
+        id: 3,
+        nama: 'Lanud Suryadama',
+        lokasi: 'Subang'
+      },
+      {
+        id: 4,
+        nama: 'Lanud Sulaiman',
+        lokasi: 'Bandung'
+      },
+      {
+        id: 5,
+        nama: 'Lanud Wiriadinata',
+        lokasi: 'Tasik Malaya'
+      },
+      {
+        id: 6,
+        nama: 'Lanud Adisutjipto',
+        lokasi: 'DI Yogyakarta'
+      },
+      {
+        id: 7,
+        nama: 'Lanud Adi Soemarmo',
+        lokasi: 'Surakarta'
+      },
+      {
+        id: 8,
+        nama: 'Lanud Iswahjudi',
+        lokasi: 'Magetan'
+      },
+      {
+        id: 9,
+        nama: 'Lanud Muljono',
+        lokasi: 'Surabaya'
+      },
+      {
+        id: 10,
+        nama: 'Lanud ABD Saleh',
+        lokasi: 'Malang'
+      }
+    ]
+  })
+}

@@ -1,0 +1,217 @@
+import CryptoJS from 'crypto-js'
+export default {
+  async loadTiket ({ commit }, payload) {
+    try {
+      const ttoken = CryptoJS.AES.decrypt(
+        localStorage.getItem('ttoken'),
+        'ttoken'
+      ).toString(CryptoJS.enc.Utf8)
+      this.$axios.setHeader('ttoken', ttoken)
+      const res = await this.$axios.$get('registered/tiket', {
+        params: payload
+      })
+      commit('SET_ALL_TIKET', res.data.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data.data,
+        totalHalaman: res.data.total_halaman,
+        halamanSekarang: res.data.halaman_sekarang,
+        summary: res.data.summary
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadDetailTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get(`registered/tiket/${payload.id}/detail`, {
+        params: payload
+      })
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async simpanTiket ({ commit }, payload) {
+    try {
+      const ttoken = CryptoJS.AES.decrypt(
+        localStorage.getItem('ttoken'),
+        'ttoken'
+      ).toString(CryptoJS.enc.Utf8)
+      this.$axios.setHeader('ttoken', ttoken)
+
+      const res = await this.$axios.$post('registered/tiket/simpan', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async hapusTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post(`registered/tiket/${payload.id}/hapus`)
+      return {
+        status: true,
+        message: 'Berhasil menghapus data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async closeTiket ({ commit }, payload) {
+    try {
+      const response = await this.$axios.$post(`registered/tiket/${payload.id}/close`)
+      return {
+        data: response.data,
+        message: 'Berhasil menutup feedback',
+        status: true
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadTrackingBantuan ({ commit }, payload) {
+    try {
+      const response = await this.$axios.get('registered/tiket/tracking', payload)
+      commit('SET_TRACKING', response.data.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: response.data.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadFeedbackTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('registered/tiket/feedback', {
+        params: payload
+      })
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async simpanFeedbackTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('registered/tiket/feedback/simpan', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

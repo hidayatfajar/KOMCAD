@@ -1,0 +1,5 @@
+export default {
+  getPrioritas (state) {
+    return state.prioritas
+  }
+}

@@ -1,0 +1,9 @@
+export default {
+  SET_PRIORITAS (state, payload) {
+    if (payload !== null) {
+      state.prioritas = payload
+    } else {
+      state.prioritas = null
+    }
+  }
+}

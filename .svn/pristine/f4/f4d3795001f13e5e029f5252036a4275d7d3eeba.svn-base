@@ -1,0 +1,289 @@
+export default {
+  async loadTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/tiket', payload)
+      commit('SET_ALL_TIKET', res.data.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data.data,
+        totalData: res.data.total_data,
+        totalHalaman: res.data.total_halaman,
+        halamanSekarang: res.data.halaman_sekarang,
+        summary: res.data.summary
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadDetailTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get(`admin/tiket/${payload.id}/detail`, {
+        params: payload
+      })
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async simpanTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/tiket/simpan', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadFeedbackTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/tiket/feedback', {
+        params: payload
+      })
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async simpanFeedbackTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/tiket/feedback/simpan', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async setKategoriTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/tiket/set-kategori', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan kategori',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async setPrioritasTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/tiket/set-prioritas', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan prioritas',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async hapusTiket ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post(`admin/tiket/${payload.id}/hapus`)
+      return {
+        status: true,
+        message: 'Berhasil menghapus data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async cetakNominatifTiket ({ commit }, payload) {
+    try {
+      const blob = await this.$axios.$get('admin/tiket/cetak-nominatif', { responseType: 'blob', params: payload })
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      const url = URL.createObjectURL(blob)
+      a.href = url
+      a.download = 'daftar-nominatif-tiket.xlsx'
+      a.click()
+      URL.revokeObjectURL(url)
+      a.remove()
+      return { status: true, message: 'Berhasil mencetak data', loading: false }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const {
+          errors,
+          message
+        } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async closeTiket ({ commit }, payload) {
+    try {
+      const response = await this.$axios.$post(`admin/tiket/${payload.tiket_id}/close`, payload)
+      return {
+        data: response.data,
+        message: 'Berhasil menutup feedback',
+        status: true
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async cetakDetailTiket ({ commit }, payload) {
+    try {
+      const blob = await this.$axios.$get(`admin/tiket/${payload.id}/cetak-detail`, { responseType: 'blob' })
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      const url = URL.createObjectURL(blob)
+      a.href = url
+      a.download = `${payload.nama}_${payload.kode}.pdf`
+      a.click()
+      URL.revokeObjectURL(url)
+      a.remove()
+      return { status: true, message: 'Berhasil mencetak data', loading: false }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const {
+          errors,
+          message
+        } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

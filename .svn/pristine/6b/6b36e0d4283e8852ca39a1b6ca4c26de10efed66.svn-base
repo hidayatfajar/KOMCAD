@@ -1,0 +1,9 @@
+export default {
+  SET_KLASIFIKASI (state, payload) {
+    if (payload !== null) {
+      state.klasifikasiBantuan = payload
+    } else {
+      state.klasifikasiBantuan = null
+    }
+  }
+}

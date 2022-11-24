@@ -1,0 +1,51 @@
+/* Default Breakpoint untuk mengatasi window dibawah xs(Extra Small) < 600px*/
+@media screen and (max-width: 600px) {
+  .default-breakpoint {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Ipad */
+@media screen and (max-width:768px) {
+  .width-field {
+    width: 100% !important;
+  }
+
+  .v-dialog {
+    width: 80% !important;
+  }
+}
+
+/* Gagaxy S5 */
+@media screen and (max-width:414px) {
+  .v-dialog {
+    width: 100% !important;
+  }
+}
+
+/*Iphone 5*/
+@media screen and (max-width: 320px) {
+
+  .repository-drawer,
+  .dokumentasi-drawer {
+    width: 300px !important;
+  }
+}
+
+
+/* Hide text module at topbarmenu*/
+@media screen and (max-width: 570px) {
+  .text-modul {
+    display: none;
+  }
+}
+
+/* show margin jika >= 1440px*/
+@media screen and (min-width: 100vw) {
+  body, .v-toolbar__content {
+    margin: 0px auto;
+    width: 100vw;
+    height: 100vh;
+  }
+}

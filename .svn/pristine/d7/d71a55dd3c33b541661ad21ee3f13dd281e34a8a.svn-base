@@ -1,0 +1,28 @@
+export default {
+  async simpanUbahSandi ({ commit }, payload) {
+    try {
+      const req = await this.$axios.$post(
+        'operator/user-management/user/simpan-ubah-password',
+        payload
+      )
+      return {
+        status: true,
+        message: req.message
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

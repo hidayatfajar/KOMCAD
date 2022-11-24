@@ -1,0 +1,18 @@
+const middleware = {}
+
+middleware['adminAuthenticated'] = require('..\\middleware\\adminAuthenticated.js')
+middleware['adminAuthenticated'] = middleware['adminAuthenticated'].default || middleware['adminAuthenticated']
+
+middleware['authenticated'] = require('..\\middleware\\authenticated.js')
+middleware['authenticated'] = middleware['authenticated'].default || middleware['authenticated']
+
+middleware['notAuthenticated'] = require('..\\middleware\\notAuthenticated.js')
+middleware['notAuthenticated'] = middleware['notAuthenticated'].default || middleware['notAuthenticated']
+
+middleware['operatorAuthenticated'] = require('..\\middleware\\operatorAuthenticated.js')
+middleware['operatorAuthenticated'] = middleware['operatorAuthenticated'].default || middleware['operatorAuthenticated']
+
+middleware['registeredAuthenticated'] = require('..\\middleware\\registeredAuthenticated.js')
+middleware['registeredAuthenticated'] = middleware['registeredAuthenticated'].default || middleware['registeredAuthenticated']
+
+export default middleware

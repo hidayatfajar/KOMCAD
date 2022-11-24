@@ -1,0 +1,107 @@
+<template>
+  <div>
+    <video class="vid1" autoplay loop muted src="~/assets/bg-video-potrait1.webm" />
+    <v-card class="content" flat color="transparent">
+      <v-img
+        max-width="250"
+        max-height="250"
+        class="mx-auto mb-10"
+        :src="require(`~/assets/images/logo/logo-ropeg.png`)"
+      />
+      <div class="white--text font-weight-bold text-h3 text-center">
+        AYO MENGABDI KEPADA NEGARA DENGAN MENDAFTAR SEBAGAI KOMPONEN CADANGAN
+        PERTAHANAN NEGARA
+      </div>
+      <div class="mt-10 white--text font-weight-reguler text-h4 text-center">
+        Nomor layanan Pengaduan : +62 896-1937-0020 (Whatsapp) dengan mengetik
+        ‘bantuan’
+      </div>
+      <div class="d-inline-flex mt-10">
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular"
+          depressed
+          @click="
+            $router.push({
+              name: 'video-pendaftaran-baru',
+            })
+          "
+        >
+          Video Cara Mendaftar Komcad
+        </v-btn>
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular ml-3"
+          depressed
+          @click="$router.push({ name: 'lokasi-pendaftaran-baru' })"
+        >
+          Waktu & Lokasi Pendaftaran
+        </v-btn>
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular ml-3"
+          depressed
+          @click="$router.push({ name: 'dokumen' })"
+        >
+          Contoh Dokumen Pendaftaran
+        </v-btn>
+      </div>
+      <div class="align-center mt-5 mr-2">
+        <v-btn
+          large
+          color="orange"
+          class="white--text text-capitalize font-weight-regular ml-3"
+          depressed
+          @click="$router.push({ name: 'sebelum-pendaftaran' })"
+        >
+          Mulai Pendaftaran
+        </v-btn>
+      </div>
+      <v-card flat color="transparent" class="mt-10">
+        <video
+          class="vid2"
+          controls
+          :poster="url"
+        >
+          <source
+            class="vid2"
+            src="~/assets/bg-video-new.mp4"
+            type="video/mp4"
+          >
+        </video>
+      </v-card>
+    </v-card>
+  </div>
+</template>
+
+<script src="./Index.js"></script>
+
+<style scoped>
+.vid1 {
+  width: 2000px;
+  height: 1600px;
+  object-fit: cover;
+  background-size: cover;
+  z-index: -1;
+}
+
+.vid2{
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+</style>

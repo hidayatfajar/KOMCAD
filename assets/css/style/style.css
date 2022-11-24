@@ -1,0 +1,132 @@
+.scroll-transparent-bg::-webkit-scrollbar-track {
+  background-color: transparent !important;
+}
+
+.scroll-transparent-bg::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ddd !important;
+}
+
+*::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background-color: #f5f5f5 !important;
+}
+
+*::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #f5f5f5 !important;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ddd #f5f5f5;
+}
+
+.table-belang tbody tr:nth-child(odd) {
+  background-color: #F8FCFF;
+}
+
+.table-custom thead tr th span {
+  color: #757575;
+  font-weight: normal;
+  font-size: .75rem !important;
+  letter-spacing: .025rem !important;
+}
+
+.table-surat thead tr th {
+  background-color: #eee !important;
+}
+
+.table-custom tbody tr td {
+  /* padding: 0px !important; */
+  font-size: .75rem !important;
+  letter-spacing: .025rem !important;
+  color: #757575;
+}
+
+.table-custom .v-select {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.satu-baris {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 20px;
+  text-overflow: ellipsis;
+}
+
+.caption-2 {
+  font-size: 11px;
+}
+.caption-3 {
+  font-size: 10px;
+}
+.caption-4 {
+  font-size: 9px;
+}
+.row {
+  margin: 0;
+  margin-left: -12px !important;
+}
+
+.body-2 {
+  background-color: white;
+}
+
+.v-treeview-node__prepend {
+  min-width: 0px!important;
+}
+
+@media print {
+  .print-none {
+    display: none;
+  }
+}
+
+.v-dialog--fullscreen {
+  width: 45vw;
+  right: 0!important;
+  left: unset;
+  height: 100vh;
+  border-radius: 12px 0px 0px 12px;
+}
+
+.container-helpdesk {
+  border-radius: 20px 20px 0px 0px !important;
+}
+
+.base-ungu {
+  background-color: #50469c !important;
+}
+
+.base-ungu-text {
+  color: #50469c !important;
+  caret-color: #50469c !important;
+}
+
+.base-oren {
+  background-color: #f19c1f !important;
+}
+
+.base-oren-text {
+  color: #f19c1f !important;
+  caret-color: #f19c1f !important;
+}
+
+.app-bar-admin > .v-toolbar__image > .v-image > .v-image__image {
+  background-position: unset !important;
+}

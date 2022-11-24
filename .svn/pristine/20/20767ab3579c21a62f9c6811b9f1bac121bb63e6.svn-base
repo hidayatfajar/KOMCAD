@@ -1,0 +1,174 @@
+import colors from 'vuetify/es5/util/colors'
+
+export default {
+  server: {
+    port: 2000
+  },
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  head: {
+    titleTemplate: '%s - KOMCAD - KEMHAN',
+    title: 'KOMCAD - KEMHAN',
+    htmlAttrs: {
+      lang: 'en'
+    },
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ]
+  },
+
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    '~/assets/css/style/style.css',
+    '~/assets/css/main.scss',
+    '~/assets/css/icons/icons.scss',
+    '~/assets/css/flaticon/file-types/flaticon.css',
+    '~/assets/css/style/responsive.css',
+    'vue-json-pretty/lib/styles.css',
+    'quill/dist/quill.snow.css',
+    'quill/dist/quill.bubble.css',
+    'quill/dist/quill.core.css',
+    'viewerjs/dist/viewer.css'
+  ],
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [
+    '~/plugins/global-components',
+    '~/plugins/axios',
+    '~/plugins/vuelidate',
+    '~/plugins/vue-json-pretty',
+    {
+      src: '~/plugins/amcharts',
+      ssr: false
+    },
+    {
+      src: '~/plugins/vue-quil-editor',
+      ssr: false
+    },
+    {
+      src: '~/plugins/v-viewer',
+      ssr: false
+    },
+    {
+      src: '~/plugins/vue-pdf',
+      ssr: false
+    },
+    {
+      src: '~/plugins/vue-pdf-app',
+      ssr: false
+    },
+    {
+      src: '~/plugins/vue-dragscroll',
+      ssr: false
+    },
+    {
+      src: '~/plugins/vue-infinite-scroll',
+      ssr: false
+    },
+  ],
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
+    // https://go.nuxtjs.dev/vuetify
+    '@nuxtjs/vuetify',
+    '@nuxtjs/router'
+  ],
+  routerModule: {
+    path: './router',
+    fileName: 'router.js'
+  },
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
+    'cookie-universal-nuxt',
+    'vue-social-sharing/nuxt'
+  ],
+
+  dotenv: {
+    systemvars: true,
+    filename: '.env.' + process.env.NODE_ENV
+  },
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    debug: true
+  },
+
+  router: {
+    prefetchLinks: false
+  },
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
+    options: {
+      customProperties: true
+    },
+    theme: {
+      light: true,
+      options: {
+        customProperties: true
+      },
+      themes: {
+        light: {
+          primary: {
+            base: '#30445c'
+          },
+          background: '#F3F8FC',
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
+  },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    extractCSS: true,
+    /*
+     ** You can extend webpack config here
+     */
+    extend (config, ctx) {
+      config.output.globalObject = 'this'
+      config.module.rules.push(
+        {
+          test: /\.pdf$/,
+          loader: 'url-loader'
+        }
+      )
+      // Run ESLint on save
+      config.module.rules.push({
+        resourceQuery: /blockType=docs/,
+        loader: require.resolve('./styleguide/docs.loader.js')
+      })
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
+        })
+      }
+    },
+    transpile: ['@amcharts/amcharts4']
+  }
+}

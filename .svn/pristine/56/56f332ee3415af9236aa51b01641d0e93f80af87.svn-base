@@ -1,0 +1,173 @@
+export default {
+  async loadMasterKlasifikasi ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/master/klasifikasi-bantuan', payload)
+      commit('SET_KLASIFIKASI', res.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadKlasifikasiBantuan ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('admin/master/klasifikasi-bantuan', {
+        params: payload
+      })
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async detailKlasifikasiBantuan ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get(`admin/master/klasifikasi-bantuan/${payload.id}/detail`)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async simpanKlasifikasiBantuan ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/master/klasifikasi-bantuan/simpan', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async hapusKlasifikasiBantuan ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post(`admin/master/klasifikasi-bantuan/${payload.id}/hapus`)
+      return {
+        status: true,
+        message: 'Berhasil menghapus data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async simpanPersonilPenanggungjawab ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('admin/master/klasifikasi-bantuan/penanggung-jawab/simpan', payload)
+      return {
+        status: true,
+        message: 'Berhasil menyimpan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async hapusPersonilPenanggungjawab ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post(`admin/master/klasifikasi-bantuan/penanggung-jawab/${payload.id}/hapus`)
+      return {
+        status: true,
+        message: 'Berhasil menghapus data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

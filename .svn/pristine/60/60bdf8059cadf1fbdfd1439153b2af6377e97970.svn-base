@@ -1,0 +1,14 @@
+export default {
+  getRiwayatChatBot (state) {
+    return state.getRiwayatChatBot
+  },
+  getResponPelanggan (state) {
+    return state.getResponPelanggan
+  },
+  getRiwayatChatDetail (state) {
+    return state.getRiwayatChatDetail
+  },
+  getTrafikPerMinggu (state) {
+    return state.getTrafikPerMinggu
+  }
+}

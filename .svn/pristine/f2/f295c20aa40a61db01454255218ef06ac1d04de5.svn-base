@@ -1,0 +1,9 @@
+export default {
+  SET_KATEGORI (state, payload) {
+    if (payload !== null) {
+      state.kategoriBantuan = payload
+    } else {
+      state.kategoriBantuan = null
+    }
+  }
+}

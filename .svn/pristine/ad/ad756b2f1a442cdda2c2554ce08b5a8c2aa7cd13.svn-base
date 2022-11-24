@@ -1,0 +1,5 @@
+export default {
+  getKlasifikasi (state) {
+    return state.klasifikasiBantuan
+  }
+}

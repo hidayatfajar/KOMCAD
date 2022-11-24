@@ -1,0 +1,164 @@
+export default {
+  async getJwtToken (payload) {
+    try {
+      const res = await this.$axios.get('chat/chatbot/get-jwttoken')
+      return {
+        status: true,
+        data: res.data.data,
+        message: 'Berhasil mendapatkan data'
+      }
+    } catch (error) {
+      return {
+        status: false,
+        data: null,
+        message: 'Gagal mendapatkan data'
+      }
+    }
+  },
+  async getHandlerLivechat (payload) {
+    try {
+      const res = await this.$axios.get('chat/chatbot/get-handler', payload)
+      return {
+        status: true,
+        data: res.data.data,
+        message: 'Berhasil mendapatkan data'
+      }
+    } catch (error) {
+      return {
+        status: false,
+        data: null,
+        message: 'Gagal mendapatkan data'
+      }
+    }
+  },
+  getAuthRoom () {
+    try {
+      const chat = localStorage.getItem('auth_chat')
+      return {
+        status: true,
+        data: chat,
+        message: 'Berhasil mendapatkan data'
+      }
+    } catch (error) {
+      return {
+        status: false,
+        data: null,
+        message: 'Gagal mendapatkan data'
+      }
+    }
+  },
+  async createRoom ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('chat/create-room', payload)
+      localStorage.setItem('auth_chat', JSON.stringify(res.data))
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadPercakapan ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$get('chat/percakapan', {
+        params: payload
+      })
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async closeRoom ({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post(
+        `chat/${payload.chat_room_id}/close-room`,
+        payload
+      )
+      localStorage.removeItem('auth_chat')
+      return {
+        status: true,
+        message: 'Berhasil mengakhiri percakapan',
+        data: res.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async downloadLampiran ({ commit }, payload) {
+    try {
+      const blob = await this.$axios.$get(
+        `chat/${payload.parameter.id}/download-lampiran`,
+        { responseType: 'blob' }
+      )
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      const url = URL.createObjectURL(blob)
+      a.href = url
+      a.download = payload.parameter.file
+      a.click()
+      URL.revokeObjectURL(url)
+      a.remove()
+      return {
+        status: true,
+        message: 'Berhasil mendownload data',
+        loading: false
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

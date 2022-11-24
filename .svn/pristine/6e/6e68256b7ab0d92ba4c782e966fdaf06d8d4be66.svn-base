@@ -1,0 +1,9 @@
+export default {
+  SET_TRACKING (state, payload) {
+    if (payload !== null) {
+      state.getTracking = payload
+    } else {
+      state.getTracking = null
+    }
+  }
+}

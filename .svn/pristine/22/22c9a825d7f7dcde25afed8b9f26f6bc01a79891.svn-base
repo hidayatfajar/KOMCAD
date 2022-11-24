@@ -1,0 +1,30 @@
+export default {
+  SET_RIWAYAT_CHATBOT (state, payload) {
+    if (payload !== null) {
+      state.getRiwayatChatBot = payload
+    } else {
+      state.getRiwayatChatBot = null
+    }
+  },
+  SET_RESPON_PELANGGAN (state, payload) {
+    if (payload !== null) {
+      state.getResponPelanggan = payload
+    } else {
+      state.getResponPelanggan = null
+    }
+  },
+  SET_RIWAYAT_CHAT_DETAIL (state, payload) {
+    if (payload !== null) {
+      state.getRiwayatChatDetail = payload
+    } else {
+      state.getRiwayatChatDetail = null
+    }
+  },
+  SET_TRAFIK_PER_MINGGU (state, payload) {
+    if (payload !== null) {
+      state.getTrafikPerMinggu = payload
+    } else {
+      state.getTrafikPerMinggu = null
+    }
+  }
+}

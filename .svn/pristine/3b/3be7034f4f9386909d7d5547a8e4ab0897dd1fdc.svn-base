@@ -1,0 +1,9 @@
+export default {
+  SET_USER (state, payload) {
+    if (payload !== null) {
+      state.user = payload
+    } else {
+      state.user = null
+    }
+  }
+}

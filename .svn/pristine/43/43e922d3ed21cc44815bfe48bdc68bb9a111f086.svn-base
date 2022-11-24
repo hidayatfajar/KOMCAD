@@ -1,0 +1,363 @@
+export default {
+  async loadPerStatus ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/count-per-status', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadFeedbackSpeedAverage ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/feedback-speed-average', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadPerClassification ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/count-per-classification', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadTrafficPerClassification ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/traffic-per-classification', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadClosedHelpPerDay ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/closed-per-day', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadHandlingComplain ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/handling-complain', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadHelpPerMonth ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/count-per-month', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadHelpPerYear ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/count-per-year', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadRekapStatusTiket ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/rekap-status-tiket', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadRekapStatusPenanganan ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/rekap-status-penanganan', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async loadRekapLayananBulan ({ commit }, payload) {
+    try {
+      const { data } = await this.$axios.$get(
+        'admin/dashboard/rekap-layanan-bulan', payload
+      )
+      return {
+        status: true,
+        data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async cetakNominatif ({ commit }, payload) {
+    try {
+      const blob = await this.$axios.$get(`admin/dashboard/${payload.jenis}/cetak`, { responseType: 'blob', params: payload })
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      const url = URL.createObjectURL(blob)
+      a.href = url
+      a.download = `daftar-nominatif-${payload.judul}.xlsx`
+      a.click()
+      URL.revokeObjectURL(url)
+      a.remove()
+      return { status: true, message: 'Berhasil mencetak data', loading: false }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const {
+          errors,
+          message
+        } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async getTokenCetak ({ commit }, payload) {
+    try {
+      const response = await this.$axios.$post('/admin/dashboard/token-cetak', payload)
+      return {
+        data: response.data,
+        message: 'Berhasil Mencetak Data',
+        status: true
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  },
+  async cetakGrafik ({ commit }, payload) {
+    try {
+      const blob = await this.$axios.$get('admin/dashboard/cetak-dashboard', { responseType: 'blob', params: payload })
+      const a = document.createElement('a')
+      a.style = 'display: none'
+      const url = URL.createObjectURL(blob)
+      a.href = url
+      a.download = 'Grafik_Dashboard_Pusjemen.pdf'
+      a.click()
+      URL.revokeObjectURL(url)
+      a.remove()
+      return { status: true, message: 'Berhasil mencetak data', loading: false }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const {
+          errors,
+          message
+        } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

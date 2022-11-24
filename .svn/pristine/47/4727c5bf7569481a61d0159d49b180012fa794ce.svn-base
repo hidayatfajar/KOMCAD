@@ -1,0 +1,10 @@
+API_HOST=http://127.0.0.1:8000/
+#API_PORT=8000
+
+BASE_URL=http://127.0.0.1:8000/
+VUE_APP_BASE_URL=http://localhost:3000
+ASSETS_BASE_URL=http://localhost/kerja/trasidea_helpdesk/pwni_kemlu/app/assets
+
+URL_WS=ws://localhost:4000
+BASE_URL_CHATBOT=http://202.182.55.114:2057
+USE_CHATBOT=false

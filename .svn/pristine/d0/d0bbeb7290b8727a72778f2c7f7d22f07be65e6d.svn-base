@@ -1,0 +1,33 @@
+export default {
+  SET_CHAT_ROOM (state, payload) {
+    if (payload !== null) {
+      state.chatRoom = payload
+    } else {
+      state.chatRoom = null
+    }
+  },
+  SET_SUMMARY (state, payload) {
+    if (payload !== null) {
+      state.summaryRoom = payload
+    } else {
+      state.summaryRoom = null
+    }
+  },
+  SET_SUMMARY_ROOM (state, payload) {
+    if (payload !== null) {
+      const semua = Object.assign({}, payload[0])
+      payload.splice(0, 1)
+      const all = payload
+      state.summaryRoom = { semua, all }
+    } else {
+      state.summaryRoom = { semua: {}, all: null }
+    }
+  },
+  SET_CHAT (state, payload) {
+    if (payload !== null) {
+      state.chat = payload
+    } else {
+      state.chat = null
+    }
+  }
+}

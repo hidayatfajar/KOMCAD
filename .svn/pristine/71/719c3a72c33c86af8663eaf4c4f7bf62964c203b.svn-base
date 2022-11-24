@@ -1,0 +1,29 @@
+export default {
+  async loadTrackingBantuan ({ commit }, payload) {
+    try {
+      const response = await this.$axios.get('tiket/tracking', {
+        params: payload
+      })
+      commit('SET_TRACKING', response.data.data)
+      return {
+        status: true,
+        message: 'Berhasil mendapatkan data',
+        data: response.data.data
+      }
+    } catch (e) {
+      if (e.message.toLowerCase().includes('network')) {
+        return {
+          status: false,
+          message: 'Koneksi bermasalah, silakan cek koneksi internet.'
+        }
+      } else {
+        const { errors, message } = e.response.data
+        return {
+          status: false,
+          errors,
+          message
+        }
+      }
+    }
+  }
+}

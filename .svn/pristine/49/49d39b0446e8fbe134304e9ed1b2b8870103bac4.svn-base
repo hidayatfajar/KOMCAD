@@ -1,0 +1,9 @@
+export default {
+  SET_INFORMASI_CHATBOT (payload, state) {
+    if (payload !== null) {
+      state.getInformasiChatbot = payload
+    } else {
+      state.getInformasiChatbot = null
+    }
+  }
+}
